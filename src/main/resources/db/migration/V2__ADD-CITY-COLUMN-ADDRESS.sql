@@ -1,0 +1,1 @@
+alter table address add column city varchar(50) not null;
