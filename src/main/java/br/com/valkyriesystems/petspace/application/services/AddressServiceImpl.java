@@ -6,10 +6,13 @@ import br.com.valkyriesystems.petspace.domain.models.entities.Address;
 import br.com.valkyriesystems.petspace.domain.ports.mappers.AddressMapper;
 import br.com.valkyriesystems.petspace.domain.ports.repositories.AddressRepository;
 import br.com.valkyriesystems.petspace.domain.ports.services.AddressService;
+import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -39,7 +42,14 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    public List<Address> listAll(@Nullable String method, @Nullable String param) {
+        return List.of();
+    }
+
+    @Override
     public void delete(String id) {
-        throw new UnsupportedOperationException("Not supported operation!"); // TODO - Implement delete method
+        Address address = addressRepository.findById(Long.valueOf(id)).orElseThrow(RuntimeException::new);
+        addressRepository.delete(address);
+        log.info("Address {} deleted", id);
     }
 }
