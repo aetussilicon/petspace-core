@@ -2,6 +2,7 @@ package br.com.valkyriesystems.petspace.domain.models.dtos.update;
 
 import br.com.valkyriesystems.petspace.domain.models.enums.InterestedIn;
 import br.com.valkyriesystems.petspace.domain.models.enums.PetAgeRange;
+import br.com.valkyriesystems.petspace.domain.ports.interfaces.UpdateDtoType;
 import jakarta.validation.constraints.Email;
 
 import java.io.Serializable;
@@ -11,5 +12,5 @@ import java.io.Serializable;
  */
 public record UpdateUsersDto(String name, String surname, @Email String email, String password, String mobilePhone,
                              InterestedIn interestedIn, PetAgeRange petAgeRange,
-                             UpdateAddressDto location, String username) implements Serializable {
+                             UpdateAddressDto location, String username) implements Serializable, UpdateDtoType {
 }

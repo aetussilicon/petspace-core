@@ -1,5 +1,6 @@
 package br.com.valkyriesystems.petspace.domain.models.dtos.create;
 
+import br.com.valkyriesystems.petspace.domain.ports.interfaces.CreateDtoType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -10,5 +11,5 @@ import java.io.Serializable;
  */
 public record CreateAddressDto(@NotBlank String country, @NotBlank String city, @NotBlank String state,
                                @NotBlank String district, @NotBlank String street, String number, String complement,
-                               @Size(max = 8) @NotBlank String zip) implements Serializable {
+                               @Size(max = 8) @NotBlank String zip) implements Serializable, CreateDtoType {
 }

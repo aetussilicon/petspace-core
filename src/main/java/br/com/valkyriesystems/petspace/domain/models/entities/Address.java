@@ -1,5 +1,6 @@
 package br.com.valkyriesystems.petspace.domain.models.entities;
 
+import br.com.valkyriesystems.petspace.domain.ports.interfaces.ResponseType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,7 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Address {
+public class Address implements ResponseType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")

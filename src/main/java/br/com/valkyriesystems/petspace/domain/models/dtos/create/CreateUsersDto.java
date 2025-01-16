@@ -2,6 +2,7 @@ package br.com.valkyriesystems.petspace.domain.models.dtos.create;
 
 import br.com.valkyriesystems.petspace.domain.models.enums.InterestedIn;
 import br.com.valkyriesystems.petspace.domain.models.enums.PetAgeRange;
+import br.com.valkyriesystems.petspace.domain.ports.interfaces.CreateDtoType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,5 +14,5 @@ import java.io.Serializable;
  */
 public record CreateUsersDto(@NotBlank String name, @NotBlank String surname, @Email String email, String password,
                              @NotNull InterestedIn interestedIn, PetAgeRange petAgeRange,
-                             @NotNull CreateAddressDto location, String username) implements Serializable {
+                             @NotNull CreateAddressDto location, String username) implements Serializable, CreateDtoType {
 }
