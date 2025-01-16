@@ -6,7 +6,7 @@ public interface DefaultCRUDInterface<
         P extends UpdateDtoType> {
 
     T create(R createDto);
-    T update(P updateDto);
+    T update(P updateDto, String id);
     T listById(String id);
     void delete(String id);
 }
