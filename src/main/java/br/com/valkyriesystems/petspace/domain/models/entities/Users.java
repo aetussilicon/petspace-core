@@ -35,7 +35,7 @@ public class Users {
     private PetAgeRange petAgeRange;
 
     @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "location")
     private Address location;
 
     @CreationTimestamp
