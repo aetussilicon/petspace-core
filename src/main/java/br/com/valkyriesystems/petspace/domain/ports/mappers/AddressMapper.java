@@ -13,8 +13,14 @@ public interface AddressMapper {
     Address toEntity(CreateAddressDto createDto);
 
     AddressDto toDto(Address address);
+
     List<AddressDto> toDto(List<Address> address);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Address partialUpdate(UpdateAddressDto updateDto, @MappingTarget Address address);
+
+    Address toEntity(AddressDto addressDto);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Address partialUpdate(AddressDto addressDto, @MappingTarget Address address);
 }
