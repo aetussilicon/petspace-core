@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -49,7 +50,7 @@ public class OrganizationsServiceImpl implements OrganizationsService {
         toUpdate = organizationsMapper.partialUpdate(updateDto, toUpdate);
 
         if (updateDto.socialMediaHandles() != null && !updateDto.socialMediaHandles().isEmpty()) {
-            Map<String, String> existingSocialMedia = toUpdate.getSocialMediaHandles();
+            Map<String, String> existingSocialMedia = new HashMap<>(toUpdate.getSocialMediaHandles());
 
             updateDto.socialMediaHandles().forEach(existingSocialMedia::putIfAbsent);
 

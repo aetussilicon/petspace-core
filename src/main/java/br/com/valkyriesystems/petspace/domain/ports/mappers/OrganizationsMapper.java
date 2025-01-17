@@ -19,6 +19,7 @@ public interface OrganizationsMapper {
     OrganizationsDto toDto(Organizations organizations);
     List<OrganizationsDto> toDto(List<Organizations> organizations);
 
+    @Mapping(target = "socialMediaHandles", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Organizations partialUpdate(UpdateOrganizationsDto updateDto, @MappingTarget Organizations organizations);
 }
