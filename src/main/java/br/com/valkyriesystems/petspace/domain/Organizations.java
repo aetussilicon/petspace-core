@@ -24,7 +24,7 @@ public class Organizations {
     private UUID ongId;
     private String ongName;
 
-    @CNPJ
+    @CNPJ(message = "Invalid CNPJ")
     private String taxNumber;
     private String description;
     private String website;
@@ -34,12 +34,12 @@ public class Organizations {
     private String contactPhone;
 
     @ElementCollection
-    @CollectionTable(name = "organization_social_media", joinColumns = @JoinColumn(name = "organization_id"))
+    @CollectionTable(name = "organization_social_media", joinColumns = @JoinColumn(name = "ong_id"))
     @MapKeyColumn(name = "platform")
     @Column(name = "handle")
     private Map<String, String> socialMediaHandles;
 
-    private Boolean verified;
+    private Boolean verified = false;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location")
