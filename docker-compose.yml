@@ -8,27 +8,34 @@ services:
     environment:
       DB_HOST: petspace-db
       DB_PORT: 5432
-      DB_NAME: covenant
+      DB_NAME: foxtrot
       DB_SCHEMA: petspace
       DB_USER: root
       DB_PASS: 92duwt96
     depends_on:
-      - petspace-db
+      petspace-db:
+        condition: service_healthy
     ports:
-      - "8000:8080"
+      - "8001:8080"
     networks:
       - petspace-network
 
   petspace-db:
     image: postgres:17
     environment:
-      POSTGRES_DB: covenant
+      POSTGRES_DB: foxtrot
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 92duwt96
     ports:
       - "5433:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d foxtrot"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
     networks:
       - petspace-network
 
